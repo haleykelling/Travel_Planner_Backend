@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  date: 2020-08-04
+  start_location: MyString
+  end_location: MyString
+  trip: one
+
+two:
+  number: 1
+  date: 2020-08-04
+  start_location: MyString
+  end_location: MyString
+  trip: two
