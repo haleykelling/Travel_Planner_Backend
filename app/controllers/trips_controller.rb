@@ -12,8 +12,8 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(set_new_params)
-
+    @trip = Trip.new(trip_params)
+    set_days
     if @trip.save
       create_days
       render json: @trip, status: :created, location: @trip
@@ -35,15 +35,15 @@ class TripsController < ApplicationController
   end
 
   def create_days
-    if trip.start_date && trip.end_date
+    if @trip.start_date && @trip.end_date
       n = 0
-      while n < trip.number_of_days
-        Day.create(number: (n + 1), date: (start_date + n), trip: @trip)
+      while n < @trip.number_of_days
+        Day.create(number: (n + 1), date: (@trip.start_date + n), trip: @trip)
         n+=1
       end
     else 
       n = 0
-      while n < trip.number_of_days
+      while n < @trip.number_of_days
         Day.create(number: (n + 1), trip: @trip)
         n+=1
       end
@@ -60,21 +60,16 @@ class TripsController < ApplicationController
       params.require(:trip).permit(:name, :start_date, :end_date, :number_of_days)
     end
 
-    def set_new_params
-      if trip_params.start_date && trip_params.number_days
-        end_date = trip_params.start_date + (trip_params.number_days - 1)
-        new_params = trip_params.merge(end_date: end_date)
-        return new_params
-      elsif trip_params.end_date && trip_params.number_days
-        start_date = trip_params.end_date - (trip_params.number_days - 1)
-        new_params = trip_params.merge(start_date: start_date)
-        return new_params
-      elsif trip_params.number_of_days
-        return trip_params
-      elsif trip_params.start_date && trip_params.end_date
-        number_days = (trip_params.end_date - trip_params.start_date).to_i + 1
-        new_params = trip_params.merge(number_of_days: number_days)
-        return new_params
+    def set_days
+      if @trip.start_date && @trip.number_of_days
+        end_date = @trip.start_date + (@trip.number_of_days - 1)
+        @trip.update(end_date: end_date)
+      elsif @trip.end_date && @trip.number_of_days
+        start_date = @trip.end_date - (@trip.number_of_days - 1)
+        @trip.update(start_date: start_date)
+      elsif @trip.start_date && @trip.end_date
+        number_days = (@trip.end_date - @trip.start_date).to_i + 1
+        @trip.update(number_of_days: number_days)
       end
     end
 end
