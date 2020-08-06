@@ -24,8 +24,9 @@ class TripsController < ApplicationController
   end
 
   def update
+    @trip.edit_days(trip_params[:start_date], trip_params[:end_date])
     if @trip.update(trip_params)
-      render json: @trip
+      render json: @trip, include: :days
     else
       render json: {error: "Unable to edit this trip. Please ensure you have a valid start and end date."}, status: :unprocessable_entity
     end
@@ -50,7 +51,7 @@ class TripsController < ApplicationController
     number_of_days = (@trip.end_date - @trip.start_date).to_i + 1
     n = 0
     while n < number_of_days
-      Day.create(number: (n + 1), date: (@trip.start_date + n), trip: @trip)
+      Day.create(date: (@trip.start_date + n), trip: @trip)
       n+=1
     end
   end
