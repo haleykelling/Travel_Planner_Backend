@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2020_08_04_172817) do
   enable_extension "plpgsql"
 
   create_table "days", force: :cascade do |t|
-    t.integer "number"
     t.date "date"
     t.string "start_city"
     t.string "end_city"
