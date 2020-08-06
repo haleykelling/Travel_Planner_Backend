@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
     has_many :days
 
-    validates :number_of_days, presence: true
+    validates :name, :start_date, :end_date, presence: true
 end
