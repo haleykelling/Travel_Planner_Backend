@@ -25,6 +25,7 @@ class TripsController < ApplicationController
 
   def update
     @trip.edit_days(trip_params[:start_date], trip_params[:end_date])
+    @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
       render json: @trip, include: :days
     else
