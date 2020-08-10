@@ -2,9 +2,9 @@ class DaysController < ApplicationController
   before_action :set_day, only: [:show, :update, :destroy]
 
   def index
-    @days = Day.all
+    @days = Day.where(trip_id: params[:trip_id])
 
-    render json: @days
+    render json: @days, include: [:activities, :transportations]
   end
 
   def show
