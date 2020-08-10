@@ -3,6 +3,15 @@ class Trip < ApplicationRecord
 
     validates :name, :start_date, :end_date, presence: true
 
+    def create_days
+        number_of_days = (self.end_date - self.start_date).to_i + 1
+        n = 0
+        while n < number_of_days
+          Day.create(date: (self.start_date + n), trip: self)
+          n+=1
+        end
+    end
+
     def edit_days(start_date, end_date)
         start_date = Date.parse(start_date)
         end_date = Date.parse(end_date)

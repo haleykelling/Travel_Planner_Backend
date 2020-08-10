@@ -1,0 +1,2 @@
+class DayTransportationsController < ApplicationController
+end

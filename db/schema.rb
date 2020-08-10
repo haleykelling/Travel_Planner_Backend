@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_172708) do
+ActiveRecord::Schema.define(version: 2020_08_10_162728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "details"
+    t.string "type_of_activity", default: "General"
     t.string "address"
     t.integer "start_time"
     t.integer "end_time"
@@ -25,6 +26,15 @@ ActiveRecord::Schema.define(version: 2020_08_07_172708) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["day_id"], name: "index_activities_on_day_id"
+  end
+
+  create_table "day_transportations", force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.bigint "transportation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day_id"], name: "index_day_transportations_on_day_id"
+    t.index ["transportation_id"], name: "index_day_transportations_on_transportation_id"
   end
 
   create_table "days", force: :cascade do |t|
@@ -37,27 +47,16 @@ ActiveRecord::Schema.define(version: 2020_08_07_172708) do
     t.index ["trip_id"], name: "index_days_on_trip_id"
   end
 
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.string "address"
-    t.integer "start_time"
-    t.bigint "day_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["day_id"], name: "index_restaurants_on_day_id"
-  end
-
   create_table "transportations", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.string "details"
+    t.string "type_of_activity"
     t.string "address"
     t.integer "start_time"
     t.integer "end_time"
-    t.bigint "day_id", null: false
+    t.boolean "multiday"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["day_id"], name: "index_transportations_on_day_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -69,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_172708) do
   end
 
   add_foreign_key "activities", "days"
+  add_foreign_key "day_transportations", "days"
+  add_foreign_key "day_transportations", "transportations"
   add_foreign_key "days", "trips"
-  add_foreign_key "restaurants", "days"
-  add_foreign_key "transportations", "days"
 end

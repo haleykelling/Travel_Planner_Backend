@@ -15,7 +15,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
 
     if @trip.save
-      create_days
+      @trip.create_days
       render json: @trip, include: :days, status: :created, location: @trip
     else
       render json: {error: "Must have a name to create trip. You can always edit this later."}, status: :unprocessable_entity
@@ -46,15 +46,6 @@ class TripsController < ApplicationController
   
   def trip_params
     params.require(:trip).permit(:name, :start_date, :end_date)
-  end
-
-  def create_days
-    number_of_days = (@trip.end_date - @trip.start_date).to_i + 1
-    n = 0
-    while n < number_of_days
-      Day.create(date: (@trip.start_date + n), trip: @trip)
-      n+=1
-    end
   end
 
 end

@@ -1,3 +1,5 @@
 class Transportation < ApplicationRecord
-  belongs_to :day
+
+    has_many :day_transportations
+    has_many :days, through: :day_transportations
 end

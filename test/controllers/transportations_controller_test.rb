@@ -12,7 +12,7 @@ class TransportationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create transportation" do
     assert_difference('Transportation.count') do
-      post transportations_url, params: { transportation: { address: @transportation.address, day_id: @transportation.day_id, description: @transportation.description, end_time: @transportation.end_time, name: @transportation.name, start_time: @transportation.start_time } }, as: :json
+      post transportations_url, params: { transportation: { address: @transportation.address, details: @transportation.details, end_time: @transportation.end_time, multiday: @transportation.multiday, name: @transportation.name, start_time: @transportation.start_time, type_of_activity: @transportation.type_of_activity } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class TransportationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update transportation" do
-    patch transportation_url(@transportation), params: { transportation: { address: @transportation.address, day_id: @transportation.day_id, description: @transportation.description, end_time: @transportation.end_time, name: @transportation.name, start_time: @transportation.start_time } }, as: :json
+    patch transportation_url(@transportation), params: { transportation: { address: @transportation.address, details: @transportation.details, end_time: @transportation.end_time, multiday: @transportation.multiday, name: @transportation.name, start_time: @transportation.start_time, type_of_activity: @transportation.type_of_activity } }, as: :json
     assert_response 200
   end
 

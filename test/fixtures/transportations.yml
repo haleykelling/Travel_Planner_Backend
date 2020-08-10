@@ -2,16 +2,18 @@
 
 one:
   name: MyString
-  description: MyString
+  details: MyString
+  type_of_activity: MyString
   address: MyString
   start_time: 1
   end_time: 1
-  day: one
+  multiday: false
 
 two:
   name: MyString
-  description: MyString
+  details: MyString
+  type_of_activity: MyString
   address: MyString
   start_time: 1
   end_time: 1
-  day: two
+  multiday: false
