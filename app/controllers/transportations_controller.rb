@@ -46,6 +46,6 @@ class TransportationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def transportation_params
-      params.require(:transportation).permit(:name, :details, :type_of_activity, :address, :start_time, :end_time, :multiday)
+      params.require(:transportation).permit(:name, :details, :type_of_activity, :address, :start_time, :end_time, :multiday, :day_id)
     end
 end
