@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   resources :day_transportations
   resources :transportations
   resources :activities
