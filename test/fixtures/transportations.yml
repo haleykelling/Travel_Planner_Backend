@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  details: MyString
+  type_of_activity: MyString
+  address: MyString
+  start_time: 1
+  end_time: 1
+  multiday: false
+
+two:
+  name: MyString
+  details: MyString
+  type_of_activity: MyString
+  address: MyString
+  start_time: 1
+  end_time: 1
+  multiday: false
