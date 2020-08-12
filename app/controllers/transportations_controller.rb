@@ -33,19 +33,18 @@ class TransportationsController < ApplicationController
     end
   end
 
-  # DELETE /transportations/1
   def destroy
+    @day_transportation = DayTransportation.find_by(transportation_id: params[:id])
+    @day_transportation.destroy
     @transportation.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_transportation
       @transportation = Transportation.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def transportation_params
-      params.require(:transportation).permit(:name, :details, :type_of_activity, :address, :start_time, :end_time, :multiday, :day_id)
+      params.require(:transportation).permit(:name, :details, :type_of_activity, :address, :start_time, :end_time, :multiday)
     end
 end
