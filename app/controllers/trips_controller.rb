@@ -1,18 +1,15 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :update, :destroy]
+  before_action :authenticate
 
   def index
-    @trips = Trip.all
+    @trips = Trip.where(user_id: @user.id)
 
     render json: @trips, include: :days
   end
 
-  def show
-    render json: @trip
-  end
-
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new(trip_params.merge(user_id: @user.id))
 
     if @trip.save
       @trip.create_days
