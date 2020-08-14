@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  resources :users, only: [:create]
+  post 'login', to: 'authentication#login'
   resources :day_transportations
   resources :transportations
   resources :activities
