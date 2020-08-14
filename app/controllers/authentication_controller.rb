@@ -6,7 +6,6 @@ class AuthenticationController < ApplicationController
             render json: { error: "Wrong username or password" }, status: :unauthorized
         else
             payload = { user_id: @user.id }
-            secret = Rails.application.secret_key_base
             token = JWT.encode payload, secret 
             render json: {
                 token: token,
