@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
 
     def authenticate
         header = request.headers['Authorization']
-        token = header.split(" ")[0]
+        token = header.split(" ")[1]
         render json: { token: token }
         # if !token 
         #     render json: {error: "Must be logged in"}, status: :forbidden
