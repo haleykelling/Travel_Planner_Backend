@@ -1,8 +1,15 @@
+
 Day.destroy_all
 Trip.destroy_all 
+Transportation.destroy_all
+DayTransportation.destroy_all
+Activity.destroy_all
+User.destroy_all
 
-greece = Trip.create(name: "Honeymoon to Greece", start_date: "2021-05-15", end_date: "2021-05-28")
-yellowstone = Trip.create(name: "Trip to Yellowstone", start_date: "2021-09-10", end_date: "2021-09-13")
+user1 = User.create(username: 'hkelling', password: '1234')
+
+greece = Trip.create(name: "Honeymoon to Greece", start_date: "2021-05-15", end_date: "2021-05-28", user: user1)
+yellowstone = Trip.create(name: "Trip to Yellowstone", start_date: "2021-09-10", end_date: "2021-09-13", user: user1)
 
 day1greece = Day.create(date: "2021-05-15", start_city: "Denver, Colorado", end_city: "Denver, Colorado", trip: greece)
 day2greece = Day.create(date: "2021-05-16", start_city: "Athens, Greece", end_city: "Athens, Greece", trip: greece)
