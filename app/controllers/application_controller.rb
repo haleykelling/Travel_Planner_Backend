@@ -14,7 +14,7 @@ class ApplicationController < ActionController::API
                 payload = JWT.decode(token, secret)[0]
                 @user = User.find(payload["user_id"])
             rescue
-                render json: { error: "Try again" }, status: :forbidden 
+                render json: { error: "Must be logged in" }, status: :forbidden 
             end
         end
     end
