@@ -7,30 +7,13 @@ class DaysController < ApplicationController
     render json: @days, include: [:activities, :transportations]
   end
 
-  def show
-    render json: @day
-  end
-
-  def create
-    @day = Day.new(day_params)
-
-    if @day.save
-      render json: @day, status: :created, location: @day
-    else
-      render json: @day.errors, status: :unprocessable_entity
-    end
-  end
-
   def update
-    if @day.update(day_params)
+    new_params = @day.check_if_coordinates_need_updated(day_params)
+    if @day.update(new_params)
       render json: @day
     else
       render json: @day.errors, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @day.destroy
   end
 
   private
@@ -40,6 +23,6 @@ class DaysController < ApplicationController
     end
 
     def day_params
-      params.require(:day).permit(:number, :date, :start_location, :end_location, :trip_id)
+      params.require(:day).permit(:number, :date, :start_city, :end_city, :trip_id)
     end
 end
