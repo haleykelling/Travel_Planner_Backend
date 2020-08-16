@@ -1,5 +1,5 @@
 class DaysController < ApplicationController
-  before_action :set_day, only: [:show, :update, :destroy]
+  before_action :set_day, only: [:update]
 
   def index
     @days = Day.where(trip_id: params[:trip_id])
