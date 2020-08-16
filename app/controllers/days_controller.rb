@@ -23,6 +23,6 @@ class DaysController < ApplicationController
     end
 
     def day_params
-      params.require(:day).permit(:number, :date, :start_city, :end_city, :trip_id)
+      params.permit(:number, :date, :start_city, :end_city, :trip_id)
     end
 end
