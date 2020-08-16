@@ -10,7 +10,7 @@ class DaysController < ApplicationController
   def update
     new_params = @day.check_if_coordinates_need_updated(day_params)
     if @day.update(new_params)
-      render json: @day
+      render json: @day, include: [:activities, :transportations]
     else
       render json: @day.errors, status: :unprocessable_entity
     end
