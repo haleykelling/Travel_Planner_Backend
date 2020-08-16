@@ -4,7 +4,7 @@ class GoogleGeocodingService
     end
 
     def get_coordinates
-        params = URI.encode(@location)
+        params = @location.split(" ").join("+")
         response = Excon.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{params}&key=#{ENV['GEOCODE_KEY']}", {
             headers: {
                 'Content-Type': 'application/json',
