@@ -8,7 +8,7 @@ class TransportationsController < ApplicationController
   end
 
   def create
-    response = GoogleGeocodingService.new(activity_params[:address]).get_coordinates
+    response = GoogleGeocodingService.new(transportation_params[:address]).get_coordinates
     latitude = response["results"][0]["geometry"]["location"]["lat"]
     longitude = response["results"][0]["geometry"]["location"]["lng"]
 
