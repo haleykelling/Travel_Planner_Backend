@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :users, only: [:create]
   post 'login', to: 'authentication#login'
-  resources :day_transportations
-  resources :transportations
-  resources :activities
+  resources :day_transportations, only: [:create]
+  resources :transportations, only: [:index, :create, :destroy]
+  resources :activities, only: [:index, :create, :destroy]
   resources :days, only: [:index, :update]
-  resources :trips
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :trips, only: [:index, :create, :update, :destroy]
 end

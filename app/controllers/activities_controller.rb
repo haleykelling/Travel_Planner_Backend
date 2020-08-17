@@ -7,25 +7,17 @@ class ActivitiesController < ApplicationController
     render json: @activities
   end
 
-  def show
-    render json: @activity
-  end
-
   def create
-    @activity = Activity.new(activity_params)
+    response = GoogleGeocodingService.new(activity_params[:address]).get_coordinates
+    latitude = response["results"][0]["geometry"]["location"]["lat"]
+    longitude = response["results"][0]["geometry"]["location"]["lng"]
+    
+    @activity = Activity.new(activity_params.merge(latitude: latitude, longitude: longitude))
 
     if @activity.save
       render json: @activity, status: :created, location: @activity
     else
-      render json: @activity.errors, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    if @activity.update(activity_params)
-      render json: @activity
-    else
-      render json: @activity.errors, status: :unprocessable_entity
+      render json: {error: "Must fill out all fields and have valid address"}, status: :unprocessable_entity
     end
   end
 
