@@ -1,35 +1,23 @@
 class TransportationsController < ApplicationController
   before_action :set_transportation, only: [:show, :update, :destroy]
 
-  # GET /transportations
   def index
     @transportations = Transportation.all
 
     render json: @transportations
   end
 
-  # GET /transportations/1
-  def show
-    render json: @transportation
-  end
-
-  # POST /transportations
   def create
-    @transportation = Transportation.new(transportation_params)
+    response = GoogleGeocodingService.new(activity_params[:address]).get_coordinates
+    latitude = response["results"][0]["geometry"]["location"]["lat"]
+    longitude = response["results"][0]["geometry"]["location"]["lng"]
+
+    @transportation = Transportation.new(transportation_params.merge(latitude: latitude, longitude: longitude))
 
     if @transportation.save
       render json: @transportation, status: :created, location: @transportation
     else
-      render json: @transportation.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /transportations/1
-  def update
-    if @transportation.update(transportation_params)
-      render json: @transportation
-    else
-      render json: @transportation.errors, status: :unprocessable_entity
+      render json: {error: "Must fill out all fields and have valid address"}, status: :unprocessable_entity
     end
   end
 
