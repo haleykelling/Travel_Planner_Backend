@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_153417) do
+ActiveRecord::Schema.define(version: 2020_08_18_171058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accomodations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -28,6 +37,23 @@ ActiveRecord::Schema.define(version: 2020_08_17_153417) do
     t.float "latitude"
     t.float "longitude"
     t.index ["day_id"], name: "index_activities_on_day_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.bigint "day_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["day_id"], name: "index_comments_on_day_id"
+  end
+
+  create_table "day_accomodations", force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.bigint "accomodation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accomodation_id"], name: "index_day_accomodations_on_accomodation_id"
+    t.index ["day_id"], name: "index_day_accomodations_on_day_id"
   end
 
   create_table "day_transportations", force: :cascade do |t|
@@ -85,6 +111,9 @@ ActiveRecord::Schema.define(version: 2020_08_17_153417) do
   end
 
   add_foreign_key "activities", "days"
+  add_foreign_key "comments", "days"
+  add_foreign_key "day_accomodations", "accomodations"
+  add_foreign_key "day_accomodations", "days"
   add_foreign_key "day_transportations", "days"
   add_foreign_key "day_transportations", "transportations"
   add_foreign_key "days", "trips"

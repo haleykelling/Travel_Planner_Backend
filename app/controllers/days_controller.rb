@@ -4,13 +4,13 @@ class DaysController < ApplicationController
   def index
     @days = Day.where(trip_id: params[:trip_id])
 
-    render json: @days, include: [:activities, :transportations]
+    render json: @days, include: [:activities, :transportations, :accomodations, :comments]
   end
 
   def update
     new_params = @day.check_if_coordinates_need_updated(day_params)
     if @day.update(new_params)
-      render json: @day, include: [:activities, :transportations]
+      render json: @day, include: [:activities, :transportations, :comments]
     else
       render json: @day.errors, status: :unprocessable_entity
     end
