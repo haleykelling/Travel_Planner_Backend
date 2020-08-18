@@ -1,6 +1,7 @@
 
 DayTransportation.destroy_all
 Activity.destroy_all
+Comment.destroy_all
 Day.destroy_all
 Trip.destroy_all 
 Transportation.destroy_all
@@ -9,7 +10,7 @@ User.destroy_all
 user1 = User.create(username: 'hkelling', password: '1234')
 
 greece = Trip.create(name: "Honeymoon to Greece", start_date: "2021-05-15", end_date: "2021-05-29", user: user1)
-yellowstone = Trip.create(name: "Trip to Yellowstone", start_date: "2021-09-10", end_date: "2021-09-13", user: user1)
+yellowstone = Trip.create(name: "Trip to Yellowstone", start_date: "2018-06-10", end_date: "2018-06-13", user: user1)
 
 day1greece = Day.create(date: "2021-05-15", start_city: "Denver, Colorado", end_city: "Denver, Colorado", trip: greece, start_latitude: 39.7392358, start_longitude: -104.990251, end_latitude: 39.7392358, end_longitude: -104.990251)
 day2greece = Day.create(date: "2021-05-16", start_city: "Athens, Greece", end_city: "Athens, Greece", trip: greece, start_latitude: 37.9838096, start_longitude: 23.7275388, end_latitude: 37.9838096, end_longitude: 23.7275388)
@@ -27,10 +28,10 @@ day13greece = Day.create(date: "2021-05-27", start_city: "Naxos, Greece", end_ci
 day14greece = Day.create(date: "2021-05-28", start_city: "Naxos, Greece", end_city: "Athens, Greece", trip: greece, start_latitude: 37.1036, start_longitude: 25.3777, end_latitude: 37.9838096, end_longitude: 23.7275388)
 day15greece = Day.create(date: "2021-05-29", start_city: "Athens, Greece", end_city: "Denver, Colorado", trip: greece, start_latitude: 37.9838096, start_longitude: 23.7275388, end_latitude: 39.7392358, end_longitude: -104.990251)
 
-day1yellowstone = Day.create(date: "2021-09-10", start_city: "Denver, Colorado", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 39.7392358, start_longitude: -104.990251, end_latitude: 43.4799, end_longitude: -110.7624)
-day2yellowstone = Day.create(date: "2021-09-11", start_city: "Jackson, Wyoming", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 43.4799, start_longitude: -110.7624, end_latitude: 43.4799, end_longitude: -110.7624)
-day3yellowstone = Day.create(date: "2021-09-12", start_city: "Jackson, Wyoming", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 43.4799, start_longitude: -110.7624, end_latitude: 43.4799, end_longitude: -110.7624)
-day4yellowstone = Day.create(date: "2021-09-13", start_city: "Jackson, Wyoming", end_city: "Denver, Colorado", trip: yellowstone, start_latitude: 43.4799, start_longitude: -110.7624, end_latitude: 39.7392358, end_longitude: -104.990251)
+day1yellowstone = Day.create(date: "2018-06-10", start_city: "Denver, Colorado", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 39.7392358, start_longitude: -104.990251, end_latitude: 43.4799, end_longitude: -110.7624)
+day2yellowstone = Day.create(date: "2018-06-11", start_city: "Jackson, Wyoming", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 43.4799, start_longitude: -110.7624, end_latitude: 43.4799, end_longitude: -110.7624)
+day3yellowstone = Day.create(date: "2018-06-12", start_city: "Jackson, Wyoming", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 43.4799, start_longitude: -110.7624, end_latitude: 43.4799, end_longitude: -110.7624)
+day4yellowstone = Day.create(date: "2018-06-13", start_city: "Jackson, Wyoming", end_city: "Denver, Colorado", trip: yellowstone, start_latitude: 43.4799, start_longitude: -110.7624, end_latitude: 39.7392358, end_longitude: -104.990251)
 
 flight1 = Transportation.create(name: 'Flight to Greece', details: 'Delta Flight #245', type_of_activity: 'Transportation', address: '8500 Pena Blvd, Denver, CO 80246', start_time: 958, end_time: 920, multiday: true, latitude: 39.849360, longitude: -104.673810)
 ferry1 = Transportation.create(name: 'Ferry from Athens to Santorini', details: 'Seajets Superjet', type_of_activity: 'Transportation', address: '10 Akti Miaouli, Piraeus 185 38, Greece', start_time: 700, end_time: 1215, multiday: false, latitude: 37.939300, longitude: 23.640130)
@@ -42,7 +43,15 @@ DayTransportation.create(transportation: flight2, day: day14greece)
 DayTransportation.create(transportation: ferry1, day: day4greece)
 
 Activity.create(name: 'Bandiera', details: 'Mediterranean Cuisine', type_of_activity: 'Food/Drink', address: 'Taki 19 Psirri, Athens 105 54, Greece', start_time: 1900, day: day2greece, latitude: 37.978310, longitude: 23.723850)
-Activity.create(name: 'Athens Mythology Highlights Tour', details: 'Visit the majestic Acropolis, the Temple of Zeus, the Ancient Agora and find out their connection to the Greek gods and goddesses.', type_of_activity: 'Sightseeing', address: 'Zappio, Athens 105 57, Greece', start_time: 900, end_time: 1300, day: day3greece, latitude: 37.973080, longitude: 23.734750)
+Activity.create(name: 'Athens Mythology Highlights Tour', details: 'Visit the majestic Acropolis, the Temple of Zeus, the Ancient Agora and find out their connection to the Greek gods and goddesses.', type_of_activity: 'History', address: 'Zappio, Athens 105 57, Greece', start_time: 900, end_time: 1300, day: day3greece, latitude: 37.973080, longitude: 23.734750)
 Activity.create(name: 'Armeni', details: 'Mediterranean/Seafood Cuisine', type_of_activity: 'Food/Drink', address: 'Oia Santorini Old Port of Armeni, Oia 847 02, Greece', start_time: 1930, day: day4greece, latitude: 36.460499, longitude: 25.380546)
 Activity.create(name: 'Private Cruise from Fira', details: 'Explore Santorini’s famous caldera, lava-rock beaches, and neighboring islands just the way you want to on this private chartered speedboat tour.', type_of_activity: 'Sightseeing', address: 'Alex Private Boat Rental, Fira Santorini Old Port, Thira 847 00, Greece', start_time: 1000, end_time: 1500, day: day5greece, latitude: 36.418138, longitude: 25.427716)
 Activity.create(name: 'Castle of St Nicholas', details: 'Visit the castle of St Nicholas and take in the 360 degree views of the caldera.', type_of_activity: 'Sightseeing', address: 'Oia 847 02, Greece', start_time: 1100, day: day6greece, latitude: 36.4618199, longitude: 25.3753101)
+
+drive1 = Transportation.create(name: 'Drive to Yellowstone', type_of_activity: 'Transportation', address: '11013 Grant Drive, Northglenn, CO 80233', start_time: 700, end_time: 1500, multiday: false, latitude: 39.896340, longitude: -104.981530)
+drive2 = Transportation.create(name: 'Drive Home', type_of_activity: 'Transportation', address: '120 Glenwood St, Jackson, WY 83001', start_time: 900, end_time: 1700, multiday: false, latitude: 43.480670, longitude: -110.763350)
+
+DayTransportation.create(transportation: drive1, day: day1yellowstone)
+DayTransportation.create(transportation: drive1, day: day4yellowstone)
+
+Activity.create(name: 'Bandiera', details: 'Mediterranean Cuisine', type_of_activity: 'Food/Drink', address: 'Taki 19 Psirri, Athens 105 54, Greece', start_time: 1900, day: day2greece, latitude: 37.978310, longitude: 23.723850)
