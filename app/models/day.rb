@@ -4,6 +4,8 @@ class Day < ApplicationRecord
   has_many :activities
   has_many :day_transportations
   has_many :transportations, through: :day_transportations
+  has_many :day_accomodations
+  has_many :accomodations, through: :day_accomodations
   has_many :comments
 
   def check_if_coordinates_need_updated(params)

@@ -4,7 +4,7 @@ class DaysController < ApplicationController
   def index
     @days = Day.where(trip_id: params[:trip_id])
 
-    render json: @days, include: [:activities, :transportations, :comments]
+    render json: @days, include: [:activities, :transportations, :accomodation, :comments]
   end
 
   def update

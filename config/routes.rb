@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :day_accomodations
-  resources :accomodations
   root 'welcome#index'
   resources :users, only: [:create]
   post 'login', to: 'authentication#login'
@@ -8,6 +6,8 @@ Rails.application.routes.draw do
   resources :transportations, only: [:index, :create, :destroy]
   resources :activities, only: [:index, :create, :destroy]
   resources :days, only: [:index, :update]
+  resources :day_accomodations, only: [:create]
+  resources :accomodations, only: [:index, :create, :destroy]
   resources :comments, only: [:index, :create, :destroy]
   resources :trips, only: [:index, :create, :update, :destroy]
 end
