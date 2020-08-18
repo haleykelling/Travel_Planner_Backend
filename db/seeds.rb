@@ -1,5 +1,7 @@
 
 DayTransportation.destroy_all
+DayAccomodation.destroy_all
+Accomodation.destroy_all
 Activity.destroy_all
 Comment.destroy_all
 Day.destroy_all
@@ -59,23 +61,21 @@ DayTransportation.create(transportation: drive1, day: day4yellowstone)
 Activity.create(name: 'Gun Barrel Steak & Game House', details: 'Steakhouse', type_of_activity: 'Food/Drink', address: '862 W Broadway Ave, Jackson, WY 83001', start_time: 1900, day: day1yellowstone, latitude: 43.474030, longitude: -110.781480)
 Activity.create(name: 'Persephone Bakery', details: 'Breakfast', type_of_activity: 'Food/Drink', address: '145 E Broadway Ave, Jackson, WY 83001', start_time: 700, day: day2yellowstone, latitude: 43.479960, longitude: -110.759950)
 Activity.create(name: 'Bin22', details: 'Italian/Wine Bar', type_of_activity: 'Food/Drink', address: '200 W Broadway Ave, Jackson, WY 83001', start_time: 1800, day: day2yellowstone, latitude: 43.479240, longitude: -110.765450)
+Activity.create(name: 'The Kitchen', details: 'Lunch', type_of_activity: 'Food/Drink', address: '155 N Glenwood St, Jackson, WY 83001', start_time: 1200, day: day3yellowstone, latitude: 43.4808743, longitude: -110.764025)
+Activity.create(name: 'Liberty Burger', details: 'American', type_of_activity: 'Food/Drink', address: '160 N Cache St, Jackson, WY 83001', start_time: 1930, day: day3yellowstone, latitude: 43.4812246, longitude: -110.7622685)
+Activity.create(name: 'Virginian Restaurant', details: 'Breakfast', type_of_activity: 'Food/Drink', address: '750 W Broadway Ave, Jackson, WY 83001', start_time: 800, day: day4yellowstone, latitude: 43.4740693, longitude: -110.77874)
 
-##Activity.create(name: 'The Kitchen', details: 'Lunch', type_of_activity: 'Food/Drink', address: '155 N Glenwood St, Jackson, WY 83001-8761', start_time: 1200, day: day3yellowstone, latitude: 43.479960, longitude: -110.759950)
-##Activity.create(name: 'Liberty Burger', details: 'American', type_of_activity: 'Food/Drink', address: '160 N Cache St, Jackson, WY 83001', start_time: 1930, day: day3yellowstone, latitude: 43.474030, longitude: -110.781480)
-##Activity.create(name: 'Virginian Restaurant', details: 'Breakfast', type_of_activity: 'Food/Drink', address: '750 W Broadway Ave, Jackson, WY 83001-8645', start_time: 800, day: day4yellowstone, latitude: 43.474030, longitude: -110.781480)
+Activity.create(name: 'Town Square', details: 'Visit Jackson town square, walk around, and shop.', type_of_activity: 'Sightseeing', address: 'Broadway at Cache Street, Jackson, WY 83001', start_time: 1600, day: day1yellowstone, latitude: 43.4799559, longitude: -110.7617792)
+Activity.create(name: 'Old Faithful', details: "The world's most famous geyser, Old Faithful in Yellowstone, currently erupts around 20 times a day.", type_of_activity: 'Sightseeing', address: '2 Old Faithful Rd, Yellowstone National Park, WY 82190', start_time: 1000, day: day2yellowstone, latitude: 44.4569121, longitude: -110.827866)
+Activity.create(name: 'Grand Prismatic Spring', details: 'Visit Grand Prismatic Spring and also see Opal Pool, Turquoise Pool, and Excelsior Geyser Crater.', type_of_activity: 'Sightseeing', address: 'Yellowstone National Park, WY 82190', start_time: 900, day: day2yellowstone, latitude: 44.4620852, longitude: -110.6424411)
+Activity.create(name: 'Lake Solitude Hike', details: 'Hike includes panoramic views, lake, and wildflowers. Begins at Jenny Lake Trailhead. Roundtrip: 15.3 miles.', type_of_activity: 'Sightseeing', address: 'Jenny Lake Trail, Alta, WY 83414', start_time: 600, day: day3yellowstone, latitude: 43.7720164, longitude: -110.7396348)
 
+hotelYellowstone = Accomodation.create(name: 'Hotel Jackson', address: '120 Glenwood St, Jackson, WY 83001', latitude: 43.480670, longitude: -110.763350)
 
-##Activity.create(name: 'Town Square', details: 'Visit Jackson town square, walk around, and shop.', type_of_activity: 'Sightseeing', address: 'Broadway at Cache Street, Jackson, WY 83001', start_time: 1600, day: day1yellowstone, latitude: 43.474030, longitude: -110.781480)
-##Activity.create(name: 'Old Faithful', details: "The world's most famous geyser, Old Faithful in Yellowstone, currently erupts around 20 times a day.", type_of_activity: 'Sightseeing', address: '2 Old Faithful Rd, Yellowstone National Park, WY 82190', start_time: 1000, day: day2yellowstone, latitude: 43.474030, longitude: -110.781480)
-##Activity.create(name: 'Grand Prismatic Spring', details: 'Visit Grand Prismatic Spring and also see Opal Pool, Turquoise Pool, and Excelsior Geyser Crater.', type_of_activity: 'Sightseeing', address: 'Yellowstone National Park, WY 82190', start_time: 900, day: day2yellowstone, latitude: 43.474030, longitude: -110.781480)
-##Activity.create(name: 'Lake Solitude Hike', details: 'Hike includes panoramic views, lake, and wildflowers. Begins at Jenny Lake Trailhead. Roundtrip: 15.3 miles.', type_of_activity: 'Sightseeing', address: 'Jenny Lake Trail, Alta, WY 83414', start_time: 600, day: day3yellowstone, latitude: 43.474030, longitude: -110.781480)
-
-hotelYellowstone = Accommodation.create(name: 'Hotel Jackson', address: '120 Glenwood St, Jackson, WY 83001', latitude: 43.480670, longitude: -110.763350)
-
-DayAccomodation.create(day: day1yellowstone, accommodation: hotelYellowstone)
-DayAccomodation.create(day: day2yellowstone, accommodation: hotelYellowstone)
-DayAccomodation.create(day: day3yellowstone, accommodation: hotelYellowstone)
-DayAccomodation.create(day: day4yellowstone, accommodation: hotelYellowstone)
+DayAccomodation.create(day: day1yellowstone, accomodation: hotelYellowstone)
+DayAccomodation.create(day: day2yellowstone, accomodation: hotelYellowstone)
+DayAccomodation.create(day: day3yellowstone, accomodation: hotelYellowstone)
+DayAccomodation.create(day: day4yellowstone, accomodation: hotelYellowstone)
 
 Comment.create(text: 'We just got back from visiting the town square in Jackson. It took us about 8 hours to drive today and then we checked into the hotel and went downtown to walk around and have dinner. It is so crazy beautiful here. The mountains are so different from our mountains back home. I am so happy we made this trip happen! Our dinner tonight was delicious. Christopher claims it was the best steak he has ever had but I have heard that before.I am so excited for tommorow!', day: day1yellowstone)
 Comment.create(text: 'So we just finished eating at Persephone Bakery, and it was AMAZING. I ordered the french toast and Christopher had the breakfast burrito, both of which were delicious. It was a super cute restaurant right outside of town. Now we are on our way to Old Faithful! ', day: day2yellowstone)

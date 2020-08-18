@@ -22,6 +22,10 @@ class AccomodationsController < ApplicationController
   end
 
   def destroy
+    @day_accomodations = DayAccomodation.where(accomodation_id: params[:id])
+    @day_accomodations.each do |day_accomodation|
+      day_accomodation.destroy
+    end
     @accomodation.destroy
   end
 

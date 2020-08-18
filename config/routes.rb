@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :transportations, only: [:index, :create, :destroy]
   resources :activities, only: [:index, :create, :destroy]
   resources :days, only: [:index, :update]
-  resources :day_accomodations, only: [:create]
+  resources :day_accomodations, only: [:index, :create]
   resources :accomodations, only: [:index, :create, :destroy]
   resources :comments, only: [:index, :create, :destroy]
   resources :trips, only: [:index, :create, :update, :destroy]
