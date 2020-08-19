@@ -45,6 +45,16 @@ Activity.create(name: 'Armeni', details: 'Mediterranean/Seafood Cuisine', type_o
 Activity.create(name: 'Private Cruise from Fira', details: 'Explore Santorini’s famous caldera, lava-rock beaches, and neighboring islands just the way you want to on this private chartered speedboat tour.', type_of_activity: 'Sightseeing', address: 'Alex Private Boat Rental, Fira Santorini Old Port, Thira 847 00, Greece', start_time: 1000, end_time: 1500, day: day5greece, latitude: 36.418138, longitude: 25.427716)
 Activity.create(name: 'Castle of St Nicholas', details: 'Visit the castle of St Nicholas and take in the 360 degree views of the caldera.', type_of_activity: 'Sightseeing', address: 'Oia 847 02, Greece', start_time: 1100, day: day6greece, latitude: 36.4618199, longitude: 25.3753101)
 
+athens_hotel = Accomodation.create(address: "9 - 11 Lyssikratous Street Plaka, Athens 105 58 Greece", latitude: 37.97055410000001, longitude: 23.731261, name: "AVA Hotel Athens", reference_number: "W239683467458", phone_number: "+30 21 0325 9000")
+oia_hotel = Accomodation.create(address: "The Main Square of St. George Church, Oia 847 02 Greece 011 30 2286 072382 ", latitude: 36.4618199, longitude: 25.3753101, name: "Katikies Hotel", reference_number: "KLO916834617458", phone_number: "+30 2286 071401")
+
+DayAccomodation.create(day: day2greece, accomodation: athens_hotel)
+DayAccomodation.create(day: day3greece, accomodation: athens_hotel)
+DayAccomodation.create(day: day4greece, accomodation: oia_hotel)
+DayAccomodation.create(day: day5greece, accomodation: oia_hotel)
+DayAccomodation.create(day: day6greece, accomodation: oia_hotel)
+DayAccomodation.create(day: day7greece, accomodation: oia_hotel)
+
 
 
 day1yellowstone = Day.create(date: "2018-06-10", start_city: "Denver, Colorado", end_city: "Jackson, Wyoming", trip: yellowstone, start_latitude: 39.7392358, start_longitude: -104.990251, end_latitude: 43.4799, end_longitude: -110.7624)
@@ -70,7 +80,7 @@ Activity.create(name: 'Old Faithful', details: "The world's most famous geyser, 
 Activity.create(name: 'Grand Prismatic Spring', details: 'Visit Grand Prismatic Spring and also see Opal Pool, Turquoise Pool, and Excelsior Geyser Crater.', type_of_activity: 'Sightseeing', address: 'Yellowstone National Park, WY 82190', start_time: 900, day: day2yellowstone, latitude: 44.4620852, longitude: -110.6424411)
 Activity.create(name: 'Lake Solitude Hike', details: 'Hike includes panoramic views, lake, and wildflowers. Begins at Jenny Lake Trailhead. Roundtrip: 15.3 miles.', type_of_activity: 'Sightseeing', address: 'Jenny Lake Trail, Alta, WY 83414', start_time: 600, day: day3yellowstone, latitude: 43.7720164, longitude: -110.7396348)
 
-hotelYellowstone = Accomodation.create(name: 'Hotel Jackson', address: '120 Glenwood St, Jackson, WY 83001', latitude: 43.480670, longitude: -110.763350)
+hotelYellowstone = Accomodation.create(name: 'Hotel Jackson', address: '120 Glenwood St, Jackson, WY 83001', latitude: 43.480670, longitude: -110.763350, reservation_number: "R124383483", phone_number: "(307) 733-2200")
 
 DayAccomodation.create(day: day1yellowstone, accomodation: hotelYellowstone)
 DayAccomodation.create(day: day2yellowstone, accomodation: hotelYellowstone)
