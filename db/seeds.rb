@@ -36,7 +36,7 @@ flight2 = Transportation.create(name: 'Flight Home', details: 'Delta Flight #161
 
 DayTransportation.create(transportation: flight1, day: day1greece)
 DayTransportation.create(transportation: flight1, day: day2greece)
-DayTransportation.create(transportation: flight2, day: day14greece)
+DayTransportation.create(transportation: flight2, day: day15greece)
 DayTransportation.create(transportation: ferry1, day: day4greece)
 
 Activity.create(name: 'Bandiera', details: 'Mediterranean Cuisine', type_of_activity: 'Food/Drink', address: 'Taki 19 Psirri, Athens 105 54, Greece', start_time: 1900, day: day2greece, latitude: 37.978310, longitude: 23.723850)
@@ -76,7 +76,7 @@ Activity.create(name: 'Liberty Burger', details: 'American', type_of_activity: '
 Activity.create(name: 'Virginian Restaurant', details: 'Breakfast', type_of_activity: 'Food/Drink', address: '750 W Broadway Ave, Jackson, WY 83001', start_time: 800, day: day4yellowstone, latitude: 43.4740693, longitude: -110.77874)
 
 Activity.create(name: 'Town Square', details: 'Visit Jackson town square, walk around, and shop.', type_of_activity: 'Sightseeing', address: 'Broadway at Cache Street, Jackson, WY 83001', start_time: 1600, day: day1yellowstone, latitude: 43.4799559, longitude: -110.7617792)
-Activity.create(name: 'Old Faithful', details: "The world's most famous geyser, Old Faithful in Yellowstone, currently erupts around 20 times a day.", type_of_activity: 'Sightseeing', address: '2 Old Faithful Rd, Yellowstone National Park, WY 82190', start_time: 1000, day: day2yellowstone, latitude: 44.4569121, longitude: -110.827866)
+Activity.create(name: 'Old Faithful', details: "The world's most famous geyser, Old Faithful in Yellowstone, currently erupts around 20 times a day.", type_of_activity: 'Sightseeing', address: '2 Old Faithful Rd, Yellowstone National Park, WY 82190', start_time: 1200, day: day2yellowstone, latitude: 44.4569121, longitude: -110.827866)
 Activity.create(name: 'Grand Prismatic Spring', details: 'Visit Grand Prismatic Spring and also see Opal Pool, Turquoise Pool, and Excelsior Geyser Crater.', type_of_activity: 'Sightseeing', address: 'Yellowstone National Park, WY 82190', start_time: 900, day: day2yellowstone, latitude: 44.4620852, longitude: -110.6424411)
 Activity.create(name: 'Lake Solitude Hike', details: 'Hike includes panoramic views, lake, and wildflowers. Begins at Jenny Lake Trailhead. Roundtrip: 15.3 miles.', type_of_activity: 'Sightseeing', address: 'Jenny Lake Trail, Alta, WY 83414', start_time: 600, day: day3yellowstone, latitude: 43.7720164, longitude: -110.7396348)
 
