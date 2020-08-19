@@ -15,7 +15,7 @@ class TripsController < ApplicationController
       @trip.create_days
       render json: @trip, include: :days, status: :created, location: @trip
     else
-      render json: {error: "Must have a name to create trip. You can always edit this later."}, status: :unprocessable_entity
+      render json: {error: "Must have a name to create trip, you can always edit this later"}, status: :unprocessable_entity
     end
 
   end
@@ -26,7 +26,7 @@ class TripsController < ApplicationController
     if @trip.update(trip_params)
       render json: @trip, include: :days
     else
-      render json: {error: "Unable to edit this trip. Please ensure you have a valid start and end date."}, status: :unprocessable_entity
+      render json: {error: "Unable to edit this trip--please ensure you have a valid start and end date"}, status: :unprocessable_entity
     end
   end
 

@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment, status: :created, location: @comment
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: {error: "Something went wrong--please try again"}, status: :unprocessable_entity
     end
   end
 
