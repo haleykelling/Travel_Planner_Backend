@@ -12,7 +12,7 @@ class AccomodationsController < ApplicationController
     latitude = response["results"][0]["geometry"]["location"]["lat"]
     longitude = response["results"][0]["geometry"]["location"]["lng"]
     
-    @accomodation = Accomodation.new(latitude: latitude, longitude: longitude, name: params[:name], address: params[:address])
+    @accomodation = Accomodation.new(latitude: latitude, longitude: longitude, name: params[:name], address: params[:address], reference_number: params[:reference_number], phone_number: params[:phone_number])
 
     if @accomodation.save
       @accomodation.create_day_accomodations(params[:day_ids])
