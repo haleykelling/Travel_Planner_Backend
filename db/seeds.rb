@@ -45,8 +45,8 @@ Activity.create(name: 'Armeni', details: 'Mediterranean/Seafood Cuisine', type_o
 Activity.create(name: 'Private Cruise from Fira', details: 'Explore Santorini’s famous caldera, lava-rock beaches, and neighboring islands just the way you want to on this private chartered speedboat tour.', type_of_activity: 'Sightseeing', address: 'Alex Private Boat Rental, Fira Santorini Old Port, Thira 847 00, Greece', start_time: 1000, end_time: 1500, day: day5greece, latitude: 36.418138, longitude: 25.427716)
 Activity.create(name: 'Castle of St Nicholas', details: 'Visit the castle of St Nicholas and take in the 360 degree views of the caldera.', type_of_activity: 'Sightseeing', address: 'Oia 847 02, Greece', start_time: 1100, day: day6greece, latitude: 36.4618199, longitude: 25.3753101)
 
-athens_hotel = Accomodation.create(address: "9 - 11 Lyssikratous Street Plaka, Athens 105 58 Greece", latitude: 37.97055410000001, longitude: 23.731261, name: "AVA Hotel Athens", reference_number: "W239683467458", phone_number: "+30 21 0325 9000")
-oia_hotel = Accomodation.create(address: "The Main Square of St. George Church, Oia 847 02 Greece 011 30 2286 072382 ", latitude: 36.4618199, longitude: 25.3753101, name: "Katikies Hotel", reference_number: "KLO916834617458", phone_number: "+30 2286 071401")
+athens_hotel = Accomodation.create(address: "9 - 11 Lyssikratous Street Plaka, Athens 105 58 Greece", latitude: 37.97055410000001, longitude: 23.731261, name: "AVA Hotel Athens", reservation_number: "W239683467458", phone_number: "+30 21 0325 9000")
+oia_hotel = Accomodation.create(address: "The Main Square of St. George Church, Oia 847 02 Greece 011 30 2286 072382 ", latitude: 36.4618199, longitude: 25.3753101, name: "Katikies Hotel", reservation_number: "KLO916834617458", phone_number: "+30 2286 071401")
 
 DayAccomodation.create(day: day2greece, accomodation: athens_hotel)
 DayAccomodation.create(day: day3greece, accomodation: athens_hotel)
