@@ -10,7 +10,7 @@ class UsersController < ApplicationController
                 username: @user.username
             }
         else
-            render json: { error: "Invalid request." }, status: :bad_request
+            render json: { error: "Invalid request" }, status: :bad_request
         end
     end
 

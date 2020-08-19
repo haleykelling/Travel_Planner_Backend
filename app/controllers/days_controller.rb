@@ -12,7 +12,7 @@ class DaysController < ApplicationController
     if @day.update(new_params)
       render json: @day, include: [:activities, :transportations, :comments]
     else
-      render json: @day.errors, status: :unprocessable_entity
+      render json: {error: "Unable to update at this time--please make sure you have entered valid locations"}, status: :unprocessable_entity
     end
   end
 

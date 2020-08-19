@@ -8,16 +8,17 @@ class AccomodationsController < ApplicationController
   end
 
   def create
-    response = GoogleGeocodingService.new(accomodation_params[:address]).get_coordinates
+    response = GoogleGeocodingService.new(params[:address]).get_coordinates
     latitude = response["results"][0]["geometry"]["location"]["lat"]
     longitude = response["results"][0]["geometry"]["location"]["lng"]
     
-    @accomodation = Accomodation.new(accomodation_params.merge(latitude: latitude, longitude: longitude))
+    @accomodation = Accomodation.new(latitude: params[:latitude], longitude: params[:longitude], name: params[:name], address: params[:address])
 
     if @accomodation.save
+      @accomodation.create_day_accomodations(params[:day_ids])
       render json: @accomodation, status: :created, location: @accomodation
     else
-      render json: @accomodation.errors, status: :unprocessable_entity
+      render json: {error: "Unable to process--please make sure you have filled out all fields and have included a valid address"}, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +36,4 @@ class AccomodationsController < ApplicationController
       @accomodation = Accomodation.find(params[:id])
     end
 
-    def accomodation_params
-      params.require(:accomodation).permit(:name, :address, :latitude, :longitude)
-    end
 end

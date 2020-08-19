@@ -56,7 +56,7 @@ drive1 = Transportation.create(name: 'Drive to Yellowstone', type_of_activity: '
 drive2 = Transportation.create(name: 'Drive Home', type_of_activity: 'Transportation', address: '120 Glenwood St, Jackson, WY 83001', start_time: 900, end_time: 1700, multiday: false, latitude: 43.480670, longitude: -110.763350)
 
 DayTransportation.create(transportation: drive1, day: day1yellowstone)
-DayTransportation.create(transportation: drive1, day: day4yellowstone)
+DayTransportation.create(transportation: drive2, day: day4yellowstone)
 
 Activity.create(name: 'Gun Barrel Steak & Game House', details: 'Steakhouse', type_of_activity: 'Food/Drink', address: '862 W Broadway Ave, Jackson, WY 83001', start_time: 1900, day: day1yellowstone, latitude: 43.474030, longitude: -110.781480)
 Activity.create(name: 'Persephone Bakery', details: 'Breakfast', type_of_activity: 'Food/Drink', address: '145 E Broadway Ave, Jackson, WY 83001', start_time: 700, day: day2yellowstone, latitude: 43.479960, longitude: -110.759950)

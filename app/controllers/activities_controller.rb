@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       render json: @activity, status: :created, location: @activity
     else
-      render json: {error: "Must fill out all fields and have valid address"}, status: :unprocessable_entity
+      render json: {error: "Unable to process--please make sure you have filled out all fields and have included a valid address"}, status: :unprocessable_entity
     end
   end
 
