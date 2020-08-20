@@ -1,5 +1,5 @@
 class Accomodation < ApplicationRecord
-    has_many :day_accomodations
+    has_many :day_accomodations, dependent: :destroy
     has_many :days, through: :day_accomodations
 
     def create_day_accomodations(day_ids)
