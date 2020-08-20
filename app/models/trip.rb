@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-    has_many :days
+    has_many :days, dependent: :destroy
     belongs_to :user
 
     validates :name, :start_date, :end_date, presence: true

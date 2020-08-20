@@ -31,7 +31,6 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    @trip.days.destroy_all
     @trip.destroy
   end
   
